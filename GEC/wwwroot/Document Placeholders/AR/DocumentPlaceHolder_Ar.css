@@ -1,0 +1,11 @@
+﻿.wrapper {
+    font-family: Arial;
+    font-size: small;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+
+.image {
+    width: 40%;
+}

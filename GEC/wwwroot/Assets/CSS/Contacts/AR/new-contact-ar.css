@@ -1,0 +1,115 @@
+.new-contact-popup-wrapper {
+    display: none;
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 10px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.95);
+}
+
+.new-contact-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px 20px 20px 20px;
+    width: 55%;
+    margin-right: auto;
+    margin-left: auto;    
+}
+
+.new-contact-popup-content {
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+@media only screen and (max-width: 992px) {
+    .new-contact-popup {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .new-contact-popup {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .new-contact-popup {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 768px ) {
+    .new-contact-popup {
+        height: initial;        
+    }
+
+    .new-contact-popup-content {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .new-contact-popup-content>div {
+        width: 100%;
+    }
+}
+
+.new-contact-detail-entry {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;    
+}
+
+.new-contact-detail-label {
+    width: 30%;
+}
+
+.new-contact-detail-label label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.new-contact-detail-input {
+    padding: 0;
+    width: 50%;
+}
+
+.new-contact-detail-input input[type="text"],
+.new-contact-detail-input input[type="email"],
+.new-contact-detail-input input[type="number"],
+.new-contact-detail-input input[type="tel"],
+.new-contact-detail-input select {
+    width: 100%;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.new-contact-detail-input select {
+    height: initial;
+}
+
+@media only screen and (max-width: 768px) {
+    .new-contact-detail-label {
+        width: 100%;
+    }
+
+    .new-contact-detail-input {
+        width: 100%;
+    }
+}
+
+.new-contact-popup .center-buttons {
+    margin-top: 30px;
+}
+
+

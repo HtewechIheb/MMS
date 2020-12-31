@@ -1,0 +1,134 @@
+﻿@model ShowContactViewModel
+@{
+    ViewData["Title"] = string.Format("Contact - {0}", Model.Contact.Name);
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Contacts/FR/show-contact-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Contacts/FR/edit-contact-fr.css" />
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-user"></i>
+        Contact: @Model.Contact.Name
+    </h1>
+</div>
+
+<div class="row show-contact-wrapper">
+    <div class="col-xs-12 col-sm-6 no-padding-right-hidden-768">
+        <fieldset class="show-contact-details-wrapper">
+            <legend>Détails</legend>
+            <div class="show-contact-details">
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Nature: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Nature">@Model.Contact.Nature</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Type: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_ContactType">@Model.Contact.ContactType</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Nom: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Name">@Model.Contact.Name</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Adresse Email 1: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Email1">@Model.Contact.Email1</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Adresse Email 2: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Email2">@Model.Contact.Email2</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Adresse Physique: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Address">@Model.Contact.Address</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Téléphone 1: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Telephone1">@Model.Contact.Telephone1</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Téléphone 2: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Telephone2">@Model.Contact.Telephone2</p>
+                    </div>
+                </div>
+
+                <div class="show-contact-detail-entry">
+                    <div class="show-contact-detail-label">
+                        <label>Fax: </label>
+                    </div>
+                    <div class="show-contact-detail-text">
+                        <p id="ShowContact_Fax">@Model.Contact.Fax</p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-xs-12 col-sm-6 no-padding-left-hidden-768">
+        <fieldset class="show-contact-groups-wrapper">
+            <legend>Groupes</legend>
+            <div class="show-contact-groups">
+                <ul id="ShowContact_ContactGroups" class="show-contact-groups-list"></ul>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.mailShow;
+
+        //Shown Contact
+        var shownContact = @Html.Raw(Json.Serialize(Model.Contact));
+
+        //Shown Contact Groups
+        var shownContactGroups = @Html.Raw(Json.Serialize(Model.ContactGroups));
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/edit-contact-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/delete-contact-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/show-contact-fr.js"></script>
+}

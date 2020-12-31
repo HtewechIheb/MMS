@@ -1,0 +1,142 @@
+﻿@model IndexMailsViewModel
+
+@{
+    Layout = "_LayoutAr";
+    ViewData["Title"] = "Courriers";
+
+    string savePrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "EditMail";
+    @await Component.InvokeAsync("EditMail", new { model = new EditMailArViewModel(), websiteLanguage = WebsiteLanguage.Ar });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = savePrefix;
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/AR/edit-mail-ar.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/AR/display-mails-ar.css" />
+}
+
+@section Sidebar {
+    <!-- Sidebar Content -->
+    <li id="mails-menu-item" class="active open">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-mail-bulk"></i>
+            <span class="menu-text">
+                المراسلات
+                <span class="processing-icon hidden">
+                    <i class="ace-icon fas fa-sync fa-spin blue"></i>
+                </span>
+                <span class="submenu-left-buttons">
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action active" id="all-mails-submenu-item">
+                <a href="/Ar/Mails">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">الكل</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Ar/Mails/Ingoing">
+                    <i class=" submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">الواردات</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Ar/Mails/Outgoing">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">الصادرات</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Ar/Mails/Internal">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">الداخليات</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li id="folders-menu-item">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-folders"></i>
+            <span class="menu-text">
+                الملفات
+                <span class="processing-icon hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></span>
+                <span class="submenu-left-buttons">
+                    <i class="anchor-button fas fa-cog" data-url="/Ar/Folders"></i>
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action">
+                <a href="#">
+                    <i class="submenu-action-icon fas fa-search"></i>
+                    <span class="menu-text"><input type="text" placeholder="بحث ..." id="submenu-folder-search" class="submenu-action-input" autocomplete="off" /></span>
+                </a>
+            </li>
+        </ul>
+    </li>
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-envelope"></i>
+        المراسلات
+    </h1>
+    <div class="header-left-buttons view-buttons-hidden-576">
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="mail-table-view-button" data-toggle="tooltip" data-placement="bottom" title="مرأى جدول">
+            <i class="fas fa-table"></i>
+        </button>
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="mail-list-view-button" data-toggle="tooltip" data-placement="bottom" title="مرأى لائحة">
+            <i class="fas fa-th-list"></i>
+        </button>
+    </div>
+</div>
+@await Component.InvokeAsync("DisplayMails", new { model = new DisplayMailsViewModel() { enableMailTypeFiltering = false }, websiteLanguage = WebsiteLanguage.Ar })
+
+<!-- inline scripts related to this page -->
+@section Scripts {
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/datetime-moment.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.print.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.select.min.js"></script>
+
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.mails;
+
+        //Mails Array
+        var mailsArray = @Html.Raw(Json.Serialize(Model.Mails));
+
+        //Contact Array
+        var contactsArray = @Html.Raw(Json.Serialize(Model.Contacts));
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Folders/AR/sidebar-folders-loading-ar.js"></script>
+
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/display-mails-ar.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/edit-mail-ar.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/delete-mail-ar.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/index-mails-ar.js"></script>
+}

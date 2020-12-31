@@ -1,0 +1,96 @@
+/* Table View */
+.folder-table-checkbox {
+    width: 5%;
+}
+
+.folder-table-first {
+    width: 80%;
+}
+
+.folder-table-actions {
+    width: 10%
+}
+
+/* Thumbnail View */
+.folder-thumbnail-view {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.folder-thumbnail-view > div {
+    width: 100%;
+}
+
+.folder-thumbnail-view .search {
+    padding: 19px 12px 19px 12px;
+}
+
+.folder-thumbnail-view .search label {
+    font-weight: 400;
+    display: inline-block;
+    font-size: 13px
+}
+
+.folder-thumbnail-view .search .search-filter {
+    text-align: right
+}
+
+.folder-thumbnail-view .search .search-filter label {
+    text-align: left;
+}
+
+.folder-thumbnail-view .search select {
+    width: 70px;
+    height: 28px;
+    padding: 2px 3px;
+    border-radius: 4px !important;
+    margin: 0;
+}
+
+.folder-thumbnail-view .search input[type=search],
+.folder-thumbnail-view .search input[type=text] {
+    width: 125px;
+    height: 18px;
+    line-height: 18px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 4px 6px
+}
+
+.folder-thumbnail .search input[type=search],
+.folder-thumbnail .search input[type=text],
+.folder-thumbnail .search select {
+    margin-bottom: 0 !important;
+    margin: 0 4px;
+}
+
+.folder-thumbnail-view .search input[type=search] {
+    border-radius: 4px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .folder-thumbnail .search input[type=search],
+    .folder-thumbnail .search input[type=text],
+    .folder-thumbnail .search select {
+        margin: 0;
+    }
+}
+
+.folder-thumbnail-view .folders-content {
+    padding: 24px 12px;
+    min-height: 20px
+}
+
+.folder-thumbnail-view .folder-entry .folder-header {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #337ab7;
+    text-align: center;
+}
+
+.folder-thumbnail-view .folder-entry .folder-entry-image {
+    width: 100%;
+}

@@ -1,0 +1,115 @@
+.edit-contact-popup-wrapper {
+    display: none;
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 10px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.95);
+}
+
+.edit-contact-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px 20px 20px 20px;
+    width: 55%;
+    margin-right: auto;
+    margin-left: auto;    
+}
+
+.edit-contact-popup-content {
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+@media only screen and (max-width: 992px) {
+    .edit-contact-popup {
+        width: 65%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .edit-contact-popup {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .edit-contact-popup {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 768px ) {
+    .edit-contact-popup {
+        height: initial;        
+    }
+
+    .edit-contact-popup-content {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .edit-contact-popup-content>div {
+        width: 100%;
+    }
+}
+
+.edit-contact-detail-entry {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px;    
+}
+
+.edit-contact-detail-label {
+    width: 30%;
+}
+
+.edit-contact-detail-label label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.edit-contact-detail-input {
+    padding: 0;
+    width: 50%;
+}
+
+.edit-contact-detail-input input[type="text"],
+.edit-contact-detail-input input[type="email"],
+.edit-contact-detail-input input[type="number"],
+.edit-contact-detail-input input[type="tel"],
+.edit-contact-detail-input select {
+    width: 100%;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.edit-contact-detail-input select {
+    height: initial;
+}
+
+@media only screen and (max-width: 768px) {
+    .edit-contact-detail-label {
+        width: 100%;
+    }
+
+    .edit-contact-detail-input {
+        width: 100%;
+    }
+}
+
+.edit-contact-popup .center-buttons {
+    margin-top: 30px;
+}
+
+

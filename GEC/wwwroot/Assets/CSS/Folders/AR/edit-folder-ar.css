@@ -1,0 +1,67 @@
+﻿.edit-folder-popup-wrapper {
+    display: none;
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.95);
+}
+
+.edit-folder-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px 30px 20px 30px;
+    width: 45%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 992px) {
+    .edit-folder-popup {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .edit-folder-popup {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .edit-folder-popup {
+        width: 85%;
+    }
+}
+
+.edit-folder-popup-content {
+    padding: 0 25px 0 25px;
+}
+
+.edit-folder-entry {
+    margin-bottom: 15px;
+}
+
+.edit-folder-label label {
+    width: 100%;
+}
+
+.edit-folder-input input[type="text"],
+.edit-folder-input textarea {
+    width: 100%;
+}
+
+.edit-folder-validation {
+    margin-top: 10px;
+}
+
+.edit-folder-popup .center-buttons {
+    margin-top: 30px;
+}
+

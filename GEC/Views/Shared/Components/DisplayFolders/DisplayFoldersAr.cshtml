@@ -1,0 +1,60 @@
+﻿<!--View Switch Buttons 576-->
+<div class="header-right-buttons view-buttons-shown-576">
+    <button class="btn btn-white btn-primary btn-bold tooltip-info" id="folder-table-view-button-576" data-toggle="tooltip" data-placement="top" title="Vue Tableau">
+        <i class="fas fa-table"></i>
+    </button>
+    <button class="btn btn-white btn-primary btn-bold tooltip-info" id="folder-thumbnail-view-button-576" data-toggle="tooltip" data-placement="top" title="Vue Vignette">
+        <i class="fas fa-th"></i>
+    </button>
+</div>
+
+<!--Table View-->
+<div class="folder-table-view table-view" id="folder-table-view">
+    <table id="folder-dynamic-table" class="table table-striped table-bordered table-hover dataTable_fixed">
+        <thead>
+            <tr>
+                <th class="folder-table-checkbox center">
+                    <label class="pos-rel">
+                        <input type="checkbox" class="ace" />
+                        <span class="lbl"></span>
+                    </label>
+                </th>
+                <th class="folder-table-id hidden"></th>
+                <th class="folder-table-first">الإسم</th>
+                <th class="folder-table-actions">الإجراءات</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!--Thumbnail View-->
+<div id="folder-thumbnail-view" class="folder-thumbnail-view table-view hidden">
+    <div class="search search-area well no-margin-bottom form-inline">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 search-length">
+                <label>
+                    العدد المعروض:
+                    <select class="form-control input-sm" id="folder-thumbnail-view-search-length">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+            <div class="hidden-xs col-sm-4 filer_options"></div>
+            <div class="col-xs-6 col-sm-4 search-filter">
+                <label>
+                    بحث:
+                    <input type="search" class="form-control input-sm" placeholder="" id="folder-thumbnail-view-search-input">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row folders-content"></div>
+    <div class="search-area well well-sm text-center" id="folders-thumbnail-pagination"></div>
+</div>

@@ -1,0 +1,146 @@
+﻿@model IndexFoldersViewModel
+
+@{
+    ViewData["Title"] = "Dossiers";
+
+    string savePrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "EditFolder";
+    @await Component.InvokeAsync("EditFolder", new { model = new EditFolderFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = savePrefix;
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Folders/FR/edit-folder-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Folders/FR/display-folders-fr.css" />
+}
+
+@section Sidebar {
+    <!-- Sidebar Content -->
+    <li id="mails-menu-item">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-mail-bulk"></i>
+            <span class="menu-text">
+                Courriers
+                <span class="processing-icon hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></span>
+                <span class="submenu-right-buttons">
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+
+            
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action" id="all-mails-submenu-item">
+                <a href="/Fr/Mails">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">Tous</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Fr/Mails/Ingoing">
+                    <i class=" submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">Courriers Entrants</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Fr/Mails/Outgoing">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">Courriers Sortants</span>
+                </a>
+            </li>
+
+            <li class="submenu-action">
+                <a href="/Fr/Mails/Internal">
+                    <i class="submenu-action-icon folder-orange fas fa-envelope"></i>
+                    <span class="menu-text">Courriers Internes</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li id="folders-menu-item" class="active">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-folders"></i>
+            <span class="menu-text">
+                Dossiers
+                <span class="processing-icon hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></span>
+                <span class="submenu-right-buttons">
+                    <i class="anchor-button fas fa-cog" data-url="/Fr/Folders"></i>
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action">
+                <a href="#">
+                    <i class="submenu-action-icon fas fa-search"></i>
+                    <span class="menu-text"><input type="text" placeholder="Recherche ..." id="submenu-folder-search" class="submenu-action-input" autocomplete="off" /></span>
+                </a>
+            </li>
+        </ul>
+    </li>
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-folders"></i>
+        Dossiers
+    </h1>
+    <div class="header-right-buttons view-buttons-hidden-576">
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="folder-table-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Tableau">
+            <i class="fas fa-table"></i>
+        </button>
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="folder-thumbnail-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Vignette">
+            <i class="fas fa-th"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Create Folder Button -->
+<div class="right-buttons-no-float">
+    <button class="btn btn-white btn-primary btn-bold new-folder-button">
+        <i class="ace-icon fas fa-plus-square"></i>
+        Nouveau Dossier
+    </button>
+</div>
+@await Component.InvokeAsync("DisplayFolders", new { websiteLanguage = WebsiteLanguage.Fr })
+
+<!-- inline scripts related to this page -->
+@section Scripts {
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/datetime-moment.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.print.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.select.min.js"></script>
+
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.folders;
+
+        //Folder Array
+        var foldersArray = @Html.Raw(Json.Serialize(Model.Folders));
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/sidebar-folders-loading-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/edit-folder-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/delete-folder-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/display-folders-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/index-folders-fr.js"></script>
+}
+

@@ -1,0 +1,229 @@
+﻿@using GEC.ViewModels.Enumerations.Mails.FR
+@model EditMailFrViewModel
+
+<div class="edit-mail-popup-wrapper">
+    <div class="edit-mail-popup">
+        <span class="closeButton">&times;</span>
+        <h3 class="header smaller lighter blue">Modifier Courrier</h3>
+        <div class="processing-icon-block-shown-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+        <label class="btn btn-white btn-primary btn-bold file-upload-button" for="edit-mail-file" id="edit-mail-upload-button">
+            <i class="ace-icon fas fa-file-upload"></i>
+            Upload
+        </label>
+        <div class="right-buttons">
+            <div class="processing-icon-inline-block-hidden-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+            <button class="btn btn-white btn-success btn-bold" type="submit" form="edit-mail-form" id="edit-mail-submit-button">
+                <i class="ace-icon fas fa-check-circle"></i>
+                Confirmer
+            </button>
+            <button class="btn btn-white btn-danger btn-bold" type="reset" form="edit-mail-form" id="edit-mail-reset-button">
+                <i class="ace-icon fas fa-times-circle"></i>
+                Réinitialiser
+            </button>
+        </div>
+        <div class="row edit-mail-popup-content">
+            <div class="col-sm-6 no-padding-right-hidden-768">
+                <fieldset class="edit-mail-details-wrapper">
+                    <legend>Détails</legend>
+                    <form id="edit-mail-form">
+                        <div class="text-left edit-mail-details">
+
+                            <input asp-for="DigitizedFile" id="edit-mail-file" class="edit-mail-file-input" />
+
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="Object">Objet<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="Object" autocomplete="off"/>
+                                    <span asp-validation-for="Object" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="MailType">Type<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="MailType" asp-items="Html.GetEnumSelectList<MailTypeFr>()"></select>
+                                    <span asp-validation-for="MailType" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="Channel">Canal<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="Channel" asp-items="Html.GetEnumSelectList<ChannelFr>()"></select>
+                                    <span asp-validation-for="Channel" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="RegistrationNumber">N° d'enregistrement<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="RegistrationNumber" disabled />
+                                    <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="RegistrationDate">Date d'enregistrement<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="RegistrationDate" />
+                                    <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="IdSender">Expéditeur<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="IdSender"></select>
+                                    <span asp-validation-for="IdSender" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="IdRecipient">Destinataire<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="IdRecipient"></select>
+                                    <span asp-validation-for="IdRecipient" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label>Copie physique<span class="red">*</span></label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <div class="edit-mail-detail-input-radio-group">
+                                        <input asp-for="HasHardCopy" type="radio" id="HasHardCopyYes" value="true" />
+                                        <label class="radioLabel" for="HasHardCopyYes">Oui</label>
+                                    </div>
+                                    <div class="edit-mail-detail-input-radio-group">
+                                        <input asp-for="HasHardCopy" type="radio" id="HasHardCopyNo" value="false" />
+                                        <label class="radioLabel" for="HasHardCopyNo">Non</label>
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="HasHardCopy" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label>Confidentialité</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <div class="edit-mail-detail-input-radio-group">
+                                        <input asp-for="Confidentiality" type="radio" id="ConfidentialityNormal" value="1" />
+                                        <label class="radioLabel" for="ConfidentialityNormal">Normal</label>
+                                    </div>
+                                    <div class="edit-mail-detail-input-radio-group">
+                                        <input asp-for="Confidentiality" type="radio" id="ConfidentialityConfidential" value="2" />
+                                        <label class="radioLabel" for="ConfidentialityConfidential">Confidentiel</label>
+                                    </div>
+                                    <div>
+                                        <span asp-validation-for="Confidentiality" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="SenderRegistrationNumber">N° d'expéditeur</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="SenderRegistrationNumber" autocomplete="off"/>
+                                    <span asp-validation-for="SenderRegistrationNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="SendingDate">Date d'envoi</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="SendingDate" />
+                                    <span asp-validation-for="SendingDate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="ProcessingTimeFrame">Priorité</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="ProcessingTimeFrame" asp-items="Html.GetEnumSelectList<ProcessingTimeFrameFr>()"></select>
+                                    <span asp-validation-for="ProcessingTimeFrame" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="Language">Langage</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <select asp-for="Language" asp-items="Html.GetEnumSelectList<LanguageFr>()"></select>
+                                    <span asp-validation-for="Language" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="IdFolder">Dossier</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <span class="input-icon input-icon-right input-icon-select">
+                                        <select asp-for="IdFolder"></select>
+                                        <i class="ace-icon fas fa-plus green new-folder-button"></i>
+                                    </span>
+                                    <span asp-validation-for="IdFolder" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="KeyWords">Mots Clés</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <input asp-for="KeyWords" autocomplete="off"/>
+                                    <span asp-validation-for="KeyWords" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="edit-mail-detail-entry">
+                                <div class="edit-mail-detail-label">
+                                    <label asp-for="Observations">Observations</label>
+                                </div>
+                                <div class="edit-mail-detail-input">
+                                    <textarea asp-for="Observations" rows="10" autocomplete="off"></textarea>
+                                    <span asp-validation-for="Observations" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </fieldset>
+            </div>
+            <div class="col-sm-6 no-padding-left-hidden-768">
+                <fieldset class="edit-mail-file-viewer-wrapper">
+                    <legend>Document</legend>
+                    <div class="edit-mail-file-viewer">
+                        <iframe src="~/Document Placeholders/FR/NoDocument_Fr.html" id="edit-mail-file-viewer"></iframe>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>

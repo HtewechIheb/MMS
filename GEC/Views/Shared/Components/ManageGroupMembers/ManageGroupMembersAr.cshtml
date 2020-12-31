@@ -1,0 +1,31 @@
+﻿@using GEC.ViewModels.Groups
+@model ManageGroupMembersViewModel
+
+<div class="manage-group-members-popup-wrapper">
+    <div class="manage-group-members-popup">
+        <span class="closeButton">&times;</span>
+        <h3 class="header blue smaller lighter">تنظيم الأعضاء</h3>
+        <div class="manage-group-members-popup-content">
+            <form id="manage-group-members-form">
+
+                <input type="hidden" asp-for="IdGroup" />
+
+                <div class="manage-group-members-entry">
+                    <select multiple="multiple" size="10" asp-for="IdContact"></select>
+                </div>
+                <div class="center-buttons">
+                    <div class="processing-icon-block-shown-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <div class="processing-icon-inline-block-hidden-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <button class="btn btn-white btn-success btn-bold" type="submit" id="manage-group-members-submit-button">
+                        <i class="ace-icon fas fa-check-circle"></i>
+                        تأكيد
+                    </button>
+                    <button class="btn btn-white btn-warning btn-bold" type="reset" id="manage-group-members-reset-button">
+                        <i class="ace-icon fas fa-sync-alt"></i>
+                        إعادة
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

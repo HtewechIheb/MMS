@@ -1,0 +1,118 @@
+﻿@using GEC.ViewModels.Enumerations.Contacts.AR
+@model EditContactArViewModel
+
+<div class="edit-contact-popup-wrapper">
+    <div class="edit-contact-popup">
+        <span class="closeButton">&times;</span>
+        <h3 class="header smaller lighter blue">تعديل مراسل</h3>
+        <div class="row edit-contact-popup-content">
+            <form id="edit-contact-form" class="form-horizontal">
+
+                <input type="hidden" asp-for="WebsiteLanguage" />
+                <input type="hidden" asp-for="Id" />
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Nature">الطبيعة<span class="red">*</span></label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <select asp-for="Nature" asp-items="Html.GetEnumSelectList<NatureAr>()"></select>
+                        <span asp-validation-for="Nature" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="ContactType">الصنف<span class="red">*</span></label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <select asp-for="ContactType" asp-items="Html.GetEnumSelectList<ContactTypeAr>()"></select>
+                        <span asp-validation-for="ContactType" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Name">الإسم<span class="red">*</span></label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Name" autocomplete="off"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Email1">البريد الإلكتروني 1</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Email1" autocomplete="off"/>
+                        <span asp-validation-for="Email1" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Email2">البريد الإلكتروني 2</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Email2" autocomplete="off"/>
+                        <span asp-validation-for="Email2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Address">العنوان</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Address" autocomplete="off"/>
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Telephone1">رقم الهاتف 1</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Telephone1" autocomplete="off"/>
+                        <span asp-validation-for="Telephone1" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Telephone2">رقم الهاتف 2</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Telephone2" autocomplete="off"/>
+                        <span asp-validation-for="Telephone2" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-contact-detail-entry">
+                    <div class="edit-contact-detail-label">
+                        <label asp-for="Fax">الفاكس</label>
+                    </div>
+                    <div class="edit-contact-detail-input">
+                        <input asp-for="Fax" autocomplete="off"/>
+                        <span asp-validation-for="Fax" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="center-buttons">
+                    <div class="processing-icon-block-shown-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <div class="processing-icon-inline-block-hidden-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <button class="btn btn-white btn-success btn-bold" type="submit" id="edit-contact-submit-button">
+                        <i class="ace-icon fas fa-check-circle"></i>
+                        تأكيد
+                    </button>
+                    <button class="btn btn-white btn-danger btn-bold" type="reset" id="edit-contact-reset-button">
+                        <i class="ace-icon fas fa-times-circle"></i>
+                        إعادة
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

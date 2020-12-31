@@ -1,0 +1,46 @@
+﻿@model HomeIndexViewModel
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+
+}
+
+@section Sidebar {
+    <!-- Sidebar Content -->
+
+}
+
+<!--Title-->
+<div class="header blue">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-home"></i>
+        Accueil
+    </h1>
+</div>
+
+<!--Navigation Buttons-->
+<div class="row navigation-buttons">
+    <div class="col-xs-12 col-sm-6 left-button">
+        <a href="/Fr/Mails" class="navigation-button-link"><div class="mails-button"></div></a>
+    </div>
+    <div class="col-xs-12 col-sm-6 right-button">
+        <a href="/Fr/Contacts" class="navigation-button-link"><div class="contacts-button"></div></a>
+    </div>
+    <div class="col-xs-12 col-sm-6 left-button">
+        <a href="/Fr/Folders" class="navigation-button-link"><div class="folders-button"></div></a>
+    </div>
+    <div class="col-xs-12 col-sm-6 right-button">
+        <a href="/Fr/Groups" class="navigation-button-link"><div class="groups-button"></div></a>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.home;
+    </script>
+}

@@ -1,0 +1,212 @@
+﻿@model ShowMailViewModel
+@{
+    Layout = "_LayoutAr";
+    ViewData["Title"] = string.Format("Courrier - {0}", Model.Mail.Object);
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/AR/show-mail-ar.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/AR/edit-mail-ar.css" />
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-file"></i>
+        مراسلة: @Model.Mail.Object
+    </h1>
+</div>
+
+<div class="row show-mail-wrapper">
+    <div class="col-sm-4 no-padding-left-hidden-768">
+        <fieldset class="show-mail-details-wrapper">
+            <legend>التفاصيل</legend>
+            <div class="show-mail-details">
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الصنف: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_MailType">@Model.Mail.MailType</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الوسيلة: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Channel">@Model.Mail.Channel</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>رقم التسجيل: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_RegistrationNumber">@Model.Mail.RegistrationNumber</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>تاريخ التسجيل: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_RegistrationDate">@Model.Mail.RegistrationDate</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>المرسل: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdSender">@Model.Mail.IdSender</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>المرسل إليه: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdRecipient">@Model.Mail.IdRecipient</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الموضوع: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Object">@Model.Mail.Object</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>السرية: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Confidentiality">@Model.Mail.Confidentiality</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>له نسخة: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_HasHardCopy">@Model.Mail.HasHardCopy</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>رقم المرسل: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_SenderRegistrationNumber">@Model.Mail.SenderRegistrationNumber</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>تاريج الإرسال: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_SendingDate">@Model.Mail.SendingDate</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>مدة المعالجة: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_ProcessingTimeFrame">@Model.Mail.ProcessingTimeFrame</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>اللغة: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Language">@Model.Mail.Language</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الكلمات الدالة: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_KeyWords">@Model.Mail.KeyWords</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الملف: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdFolder">@Model.Mail.IdFolder</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>الملاحظات: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Observations">@Model.Mail.Observations</p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="col-sm-8 no-padding-right-hidden-768">
+        <fieldset class="show-mail-file-viewer-wrapper">
+            <legend>الوثيقة</legend>
+            <div class="show-mail-file-viewer">
+                @if (Model.Mail.DigitizedFile != null)
+                {
+                    <iframe src="/API/Mails/Download/@Model.Mail.Id" id="show-mail-file-viewer"></iframe>
+                }
+                else
+                {
+                    <iframe src="~/Document Placeholders/AR/NoDocument_Ar.html" id="show-mail-file-viewer"></iframe>
+                }
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.mailShow;
+
+        //Shown Mail
+        var shownMail = @Html.Raw(Json.Serialize(Model.Mail));
+
+        //Mail Folder
+        var shownMailFolder = @Html.Raw(Json.Serialize(Model.Folder));
+
+        //Mail Sender
+        var shownMailSender = @Html.Raw(Json.Serialize(Model.Sender));
+
+        //Mail Recipient
+        var shownMailRecipient = @Html.Raw(Json.Serialize(Model.Recipient));
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/edit-mail-ar.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/show-mail-ar.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/AR/delete-mail-ar.js"></script>
+}

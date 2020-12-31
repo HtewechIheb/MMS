@@ -1,0 +1,223 @@
+.new-mail-popup-wrapper {
+    display: none;
+    position: fixed; 
+    z-index: 1000;
+    padding-top: 10px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.95);
+}
+
+.new-mail-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px 20px 10px 20px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;    
+}
+
+.new-mail-popup-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px ) {
+    .new-mail-popup {
+        height: initial;        
+    }
+
+    .new-mail-popup-content {
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .new-contact-popup-content {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .new-mail-popup-content>div {
+        width: 100%;
+    }
+}
+
+.new-mail-popup .file-upload-button {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 576px) {
+    .new-mail-popup .file-upload-button {
+        display: block;
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.new-mail-details-wrapper,
+.new-mail-file-viewer-wrapper {
+    height: 100%;
+    border: 1px solid #E0E0E0;
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+@media only screen and (min-width: 768px){
+    .new-mail-file-viewer-wrapper {
+        border-left: 0;
+    }
+}
+
+.new-mail-details-wrapper legend,
+.new-mail-file-viewer-wrapper legend {
+    border: none;
+    width: initial;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.new-mail-details {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+    .new-mail-details {
+        height: initial;
+    }   
+}
+
+.new-mail-file-input {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.new-mail-detail-entry {  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap; 
+    padding-bottom: 5px;    
+}
+
+/*.new-mail-detail-shared-entry {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}*/
+
+@media only screen and (max-width: 768px) {
+    .new-mail-detail-entry {  
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    /*.new-mail-detail-shared-entry {
+        width: 100%;
+        padding-bottom: 5px;
+    }*/
+}
+
+.new-mail-detail-label {
+    width: 40%;
+}
+
+.new-mail-detail-label label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.new-mail-detail-input {
+    width: 60%;
+}
+
+.new-mail-detail-input input[type="text"],
+.new-mail-detail-input input[type="date"],
+.new-mail-detail-input input[type="datetime-local"],
+.new-mail-detail-input input[type="number"],
+.new-mail-detail-input select,
+.new-mail-detail-input textarea {
+    width: 100%;
+    padding: 4px;
+    font-size: 10px;
+}
+
+.new-mail-detail-input select {
+    height: initial;
+}
+
+.new-mail-detail-input .input-icon {
+    width: 100%;
+}
+
+.new-mail-detail-input .input-icon .ace-icon {
+    line-height: 24px;
+}
+
+.new-mail-detail-input input[type="radio"] {
+    margin-right: 5px;
+    margin-top: 0;
+}
+
+.new-mail-detail-input label.radioLabel {
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+.new-mail-detail-input-radio-group {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 576px){
+    .new-mail-detail-label {
+        width: 100%;
+    }
+
+    .new-mail-detail-input {
+        width: 100%;
+    }
+
+    .new-mail-detail-input-radio-group {
+        width: 100%;
+    }
+}
+
+/*.new-mail-detail-shared-entry .new-mail-detail-label,
+.new-mail-detail-shared-entry .new-mail-detail-input {
+    padding: 0;
+}*/
+
+.new-mail-file-viewer {
+    height: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.new-mail-file-viewer iframe {
+    height: 100%;
+    width: 100%;
+    min-height: 550px;
+    border: 1px solid black;
+}

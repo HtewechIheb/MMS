@@ -1,0 +1,211 @@
+﻿@model ShowMailViewModel
+@{
+    ViewData["Title"] = string.Format("Courrier - {0}", Model.Mail.Object);
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/FR/show-mail-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/FR/edit-mail-fr.css" />
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-file"></i>
+        Courrier: @Model.Mail.Object
+    </h1>
+</div>
+
+<div class="row show-mail-wrapper">
+    <div class="col-sm-4 no-padding-right-hidden-768">
+        <fieldset class="show-mail-details-wrapper">
+            <legend>Détails</legend>
+            <div class="show-mail-details">
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Type: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_MailType">@Model.Mail.MailType</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Canal: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Channel">@Model.Mail.Channel</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Numéro d'enregistrement: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_RegistrationNumber">@Model.Mail.RegistrationNumber</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Date d'enregistrement: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_RegistrationDate">@Model.Mail.RegistrationDate</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Expéditeur: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdSender">@Model.Mail.IdSender</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Destinataire: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdRecipient">@Model.Mail.IdRecipient</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Objet: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Object">@Model.Mail.Object</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Confidentialité: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Confidentiality">@Model.Mail.Confidentiality</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Copie physique: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_HasHardCopy">@Model.Mail.HasHardCopy</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Numéro d'expéditeur: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_SenderRegistrationNumber">@Model.Mail.SenderRegistrationNumber</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Date d'envoi: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_SendingDate">@Model.Mail.SendingDate</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Période de traitement: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_ProcessingTimeFrame">@Model.Mail.ProcessingTimeFrame</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Langage: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Language">@Model.Mail.Language</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Mots Clés: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_KeyWords">@Model.Mail.KeyWords</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Dossier: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_IdFolder">@Model.Mail.IdFolder</p>
+                    </div>
+                </div>
+
+                <div class="show-mail-detail-entry">
+                    <div class="show-mail-detail-label">
+                        <label>Observations: </label>
+                    </div>
+                    <div class="show-mail-detail-text">
+                        <p id="ShowMail_Observations">@Model.Mail.Observations</p>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="col-sm-8 no-padding-left-hidden-768">
+        <fieldset class="show-mail-file-viewer-wrapper">
+            <legend>Courrier</legend>
+            <div class="show-mail-file-viewer">
+                @if (Model.Mail.DigitizedFile != null)
+                {
+                    <iframe src="/API/Mails/Download/@Model.Mail.Id" id="show-mail-file-viewer"></iframe>
+                }
+                else
+                {
+                    <iframe src="~/Document Placeholders/FR/NoDocument_Fr.html" id="show-mail-file-viewer"></iframe>
+                }
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Scripts -->
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.mailShow;
+
+        //Shown Mail
+        var shownMail = @Html.Raw(Json.Serialize(Model.Mail));
+
+        //Mail Folder
+        var shownMailFolder = @Html.Raw(Json.Serialize(Model.Folder));
+
+        //Mail Sender
+        var shownMailSender = @Html.Raw(Json.Serialize(Model.Sender));
+
+        //Mail Recipient
+        var shownMailRecipient = @Html.Raw(Json.Serialize(Model.Recipient));
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Mails/FR/edit-mail-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/FR/show-mail-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Mails/FR/delete-mail-fr.js"></script>
+}

@@ -1,0 +1,462 @@
+﻿@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - GEC</title>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Assets/fontawesome-pro-5.13.0-web/css/all.min.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/bootstrap-treeview.min.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/sweetalert2.min.css" />
+    <!-- jQuery -->
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/jquery.gritter.min.css" />
+
+    <!-- Shared Components Styles -->
+    <link rel="stylesheet" href="~/Assets/CSS/Mails/FR/new-mail-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Folders/FR/new-folder-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Contacts/FR/new-contact-fr.css" />
+
+    <!-- page specific plugin styles -->
+    @RenderSection("Styles", required: false)
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/FR/ace-fr.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/FR/main-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/ace-skins.min.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/ace-rtl.min.css" />
+
+    <!-- ace settings handler -->
+    <script type="text/javascript" src="~/Assets/JS/Shared/ace-extra.min.js"></script>
+</head>
+
+<body class="no-skin">
+    <!--navbar-->
+    <div id="navbar" class="navbar navbar-default ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <!--navbar collapse button-->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <!--navbar header-->
+            <div class="navbar-header pull-left">
+                <a href="/Fr" class="navbar-brand">
+                    <small>
+                        <i class="fas fa-file-alt"></i>
+                        GEC
+                    </small>
+                </a>
+            </div>
+
+            <!--navbar buttons-->
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <!--notifications-->
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fas fa-bell"></i>
+                        </a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                            <!--header-->
+                            <li class="dropdown-header">
+                                <i class="ace-icon fas fa-exclamation-triangle"></i>
+                                8 Notifications
+                            </li>
+
+                            <!--content-->
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                    <!--elements-->
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-pink fas fa-comment"></i>
+                                                    New Comments
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs btn-primary fas fa-user"></i>
+                                                    Bob just signed up as an editor ...
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-success fas fa-shopping-cart"></i>
+                                                    New Orders
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-info fab fa-twitter"></i>
+                                                    Followers
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--footer-->
+                            <li class="dropdown-footer">
+                                <a href="#">
+                                    Tous les notifications
+                                    <i class="ace-icon fas fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--messages-->
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fas fa-envelope"></i>
+                        </a>
+
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <!--header-->
+                            <li class="dropdown-header">
+                                <i class="ace-icon fas fa-envelope-open"></i>
+                                5 Messages
+                            </li>
+
+                            <!--content-->
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <!--elements-->
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <span class="msg-title">
+                                                <span class="blue">Alex:</span>
+                                                Ciao sociis natoque penatibus et auctor ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>a moment ago</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <span class="msg-title">
+                                                <span class="blue">Susan:</span>
+                                                Vestibulum id ligula porta felis euismod ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>20 minutes ago</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <span class="msg-title">
+                                                <span class="blue">Bob:</span>
+                                                Nullam quis risus eget urna mollis ornare ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>3:15 pm</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <span class="msg-title">
+                                                <span class="blue">Kate:</span>
+                                                Ciao sociis natoque eget urna mollis ornare ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>1:33 pm</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <span class="msg-title">
+                                                <span class="blue">Fred:</span>
+                                                Vestibulum id penatibus et auctor  ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>10:09 am</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!--footer-->
+                            <li class="dropdown-footer">
+                                <a href="#">
+                                    Tous les messages
+                                    <i class="ace-icon fas fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--user-->
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/Assets/Avatars/businessman.png" alt="User Photo" />
+                            <span class="user-info">
+                                <small>Bienvenue,</small>
+                                @User.Identity.Name
+                            </span>
+
+                            <i class="ace-icon fas fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <!--elements-->
+                            <li  class="active">
+                                <a href="/Fr">
+                                    <i class="ace-icon fas fa-language"></i>
+                                    Français
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Ar">
+                                    <i class="ace-icon fas fa-language"></i>
+                                    Arabe
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a id="logout-button" href="#">
+                                    <i class="ace-icon fas fa-power-off"></i>
+                                    Logout
+                                    <form id="logout-form" asp-action="Logout" asp-controller="Auth" method="POST"></form>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+
+        <!--sidebar-->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+
+            <!--sidebar shortcuts-->
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <a href="/Fr/Mails" class="btn btn-success tooltip-success" data-toggle="tooltip" data-placement="bottom" title="Courriers">
+                        <i class="ace-icon fas fa-mail-bulk"></i>
+                    </a>
+
+                    <a href="/Fr/Folders" class="btn btn-success tooltip-success" data-toggle="tooltip" data-placement="bottom" title="Dossiers">
+                        <i class="ace-icon fas fa-folders"></i>
+                    </a>
+
+                    <a href="/Fr/Contacts" class="btn btn-success tooltip-success" data-toggle="tooltip" data-placement="bottom" title="Contacts">
+                        <i class="ace-icon fas fa-user"></i>
+                    </a>
+
+                    <a href="/Fr/Groups" class="btn btn-success tooltip-success" data-toggle="tooltip" data-placement="bottom" title="Groupes">
+                        <i class="ace-icon fas fa-users"></i>
+                    </a>
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-success"></span>
+                </div>
+            </div>
+
+            <!--sidebar treeview-->
+            <ul class="nav nav-list">
+                @RenderSection("Sidebar", required: false)
+            </ul>
+
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon" class="ace-icon fas fa-angle-double-left ace-save-state" data-icon1="ace-icon fas fa-angle-double-left" data-icon2="ace-icon fas fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <!--main content-->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!--header-->
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <!--search-->
+                    <button class="btn btn-success pull-right breadcrumbs-button" id="new-contact-button">
+                        <i class="ace-icon fas fa-user-plus"></i>
+                        <span class="button-text">Nouveau Contact</span>
+                    </button>
+                    <button class="btn btn-success pull-right breadcrumbs-button" id="new-mail-button">
+                        <i class="ace-icon fas fa-folder-plus"></i>
+                        <span class="button-text">Nouveau Courrier</span>
+                    </button>
+                    <button class="btn btn-success pull-right breadcrumbs-button" id="advanced-search-button">
+                        <i class="ace-icon fas fa-search-plus"></i>
+                        <span class="button-text">Recherche Avancée</span>
+                    </button>
+                    <div class="nav-search pull-right">
+                        <form action="/Fr/Mails/Search" method="GET" class="form-search" id="nav-search-form">
+                            <span class="input-icon">
+                                <input type="text" placeholder="Recherche ..." class="nav-search-input popover-error" name="queryString" id="nav-search-input" autocomplete="off" data-toggle="popover" title="<i class='fas fa-exclamation-triangle'></i> Erreur" data-content="Veuillez saisir le text du recherche." data-placement="bottom" data-trigger="focus" required />
+                                <i class="ace-icon fas fa-search nav-search-icon" id="nav-search-button"></i>
+                                <input type="hidden" id="dayString" name="dayString" />
+                                <input type="hidden" id="monthString" name="monthString" />
+                                <input type="hidden" id="yearString" name="yearString" />
+                            </span>
+                        </form>
+                    </div>
+                </div>
+
+                <!--content-->
+                <div class="page-content">
+                    <!-- PAGE CONTENT BEGINS -->
+                    @{
+                        string savePrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+
+                        ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "NewMail";
+                        @await Component.InvokeAsync("NewMail", new { model = new NewMailFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+                        ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "NewFolder";
+                        @await Component.InvokeAsync("NewFolder", new { model = new NewFolderFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+                        ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "NewContact";
+                        @await Component.InvokeAsync("NewContact", new { model = new NewContactFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+                        ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = savePrefix;
+                    }
+                    @RenderBody()
+                    <!-- PAGE CONTENT ENDS -->
+                </div>
+            </div>
+        </div>
+
+        <!--footer-->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <!--text-->
+                    <span class="bigger-120">
+                        <span class="blue bolder">Iheb Htewech Solutions</span>
+                        Application &copy; 2019-2020
+                    </span>
+
+                    &nbsp; &nbsp;
+
+                    <!--buttons-->
+                    <span class="action-buttons">
+                        <a href="#">
+                            <i class="ace-icon fab fa-twitter-square light-blue bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fab fa-facebook-square text-primary bigger-150"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="ace-icon fas fa-rss-square orange bigger-150"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!--scroll up button-->
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fas fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+
+    <!-- basic scripts -->
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.validate.unobtrusive.min.js"></script>
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script type='text/javascript' src='~/Assets/JS/Shared/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <script type="text/javascript" src="~/Assets/JS/Shared/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.gritter.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/bootstrap-treeview.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/moment.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/pagination.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/sweetalert2.all.min.js"></script>
+
+    <!-- Main Layout Script -->
+    <script type="text/javascript" src="~/Assets/JS/Shared/main.js"></script>
+
+    <!-- ace scripts -->
+    <script type="text/javascript" src="~/Assets/JS/Shared/ace-elements.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/ace.min.js"></script>
+
+    <!-- Shared Components Scripts -->
+    <script type="text/javascript" src="~/Assets/JS/Mails/FR/mail-utilities-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/folder-utilities-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/contact-utilities-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/group-utilities-fr.js"></script>
+
+    <script type="text/javascript" src="~/Assets/JS/Mails/FR/new-mail-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Folders/FR/new-folder-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/new-contact-fr.js"></script>
+
+
+    <!-- page specific plugin scripts -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

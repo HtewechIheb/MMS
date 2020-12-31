@@ -1,0 +1,100 @@
+﻿<!--Filtering-->
+<div class="row contact-filtering contact-filtering-hidden-576">
+    <div class="col-xs-6 col-md-4 contact-filtering-entry">
+        <label for="filtering-nature" class="contact-filtering-label">الطبيعة:</label>
+        <select class="form-control form-control-sm contact-filtering-input" id="filtering-nature" name="filtering-nature">
+            <option value="all">الكل</option>
+            <option value="0">شخص</option>
+            <option value="1">مؤسسة</option>
+        </select>
+    </div>
+    <div class="col-xs-6 col-md-4 contact-filtering-entry">
+        <label for="filtering-type" class="contact-filtering-label">الصنف:</label>
+        <select class="form-control form-control-sm contact-filtering-input" id="filtering-type" name="filtering-type">
+            <option value="all">الكل</option>
+            <option value="0">داخلي</option>
+            <option value="1">خارجي</option>
+        </select>
+    </div>
+</div>
+<div class="row contact-filtering contact-filtering-shown-576">
+    <div class="col-xs-12 contact-filtering-entry">
+        <label for="filtering-nature" class="contact-filtering-label">Nature:</label>
+        <select class="form-control form-control-sm contact-filtering-input" id="filtering-nature" name="filtering-nature">
+            <option value="all">الكل</option>
+            <option value="0">شخص</option>
+            <option value="1">مؤسسة</option>
+        </select>
+    </div>
+    <div class="col-xs-12 contact-filtering-entry">
+        <label for="filtering-type" class="contact-filtering-label">الطبيعة:</label>
+        <select class="form-control form-control-sm contact-filtering-input" id="filtering-type" name="filtering-type">
+            <option value="all">الكل</option>
+            <option value="0">داخلي</option>
+            <option value="1">خارجي</option>
+        </select>
+    </div>
+</div>
+
+<!--View Switch Buttons 576-->
+<div class="header-right-buttons view-buttons-shown-576">
+    <button class="btn btn-white btn-primary btn-bold tooltip-info" id="contact-table-view-button-576" data-toggle="tooltip" data-placement="top" title="Vue Tableau">
+        <i class="fas fa-table"></i>
+    </button>
+    <button class="btn btn-white btn-primary btn-bold tooltip-info" id="contact-list-view-button-576" data-toggle="tooltip" data-placement="top" title="Vue Liste">
+        <i class="fas fa-th-list"></i>
+    </button>
+</div>
+
+<!--Table View-->
+<div class="contact-table-view table-view" id="contact-table-view">
+    <table id="contact-dynamic-table" class="table table-striped table-bordered table-hover dataTable_fixed">
+        <thead>
+            <tr>
+                <th class="contact-table-checkbox center">
+                    <label class="pos-rel">
+                        <input type="checkbox" class="ace" />
+                        <span class="lbl"></span>
+                    </label>
+                </th>
+                <th class="mail-table-id hidden"></th>
+                <th class="contact-table-first">الإسم</th>
+                <th class="contact-table-second hidden-480">الطبيعة</th>
+                <th class="contact-table-third hidden-768">الصنف</th>
+                <th class="contact-table-actions">الإجراءات</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!--List View-->
+<div class="hidden contact-list-view list-view" id="contact-list-view">
+    <div class="search search-area well no-margin-bottom form-inline">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 search-length">
+                <label>
+                    العدد المعروض:
+                    <select class="form-control input-sm" id="contact-list-view-search-length">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+            <div class="hidden-xs col-sm-4 filer_options"></div>
+            <div class="col-xs-6 col-sm-4 search-filter">
+                <label>
+                    بحث:
+                    <input type="search" class="form-control input-sm" placeholder="" id="contact-list-view-search-input">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="contacts-content"></div>
+    <div class="search-area well well-sm text-center" id="contacts-list-pagination"></div>
+</div>

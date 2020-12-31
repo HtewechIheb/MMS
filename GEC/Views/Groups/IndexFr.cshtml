@@ -1,0 +1,111 @@
+﻿@model IndexGroupsViewModel
+
+@{
+    ViewData["Title"] = "Groupes";
+
+    string savePrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "NewGroup";
+    @await Component.InvokeAsync("NewGroup", new { model = new NewGroupFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "EditGroup";
+    @await Component.InvokeAsync("EditGroup", new { model = new EditGroupFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "ManageGroupMembers";
+    @await Component.InvokeAsync("ManageGroupMembers", new { model = new ManageGroupMembersViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = savePrefix;
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/css/Shared/bootstrap-duallistbox.min.css" />
+
+    <link rel="stylesheet" href="~/Assets/CSS/Groups/FR/manage-group-members-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Groups/FR/new-group-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Groups/FR/edit-group-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Groups/FR/display-groups-fr.css" />
+}
+
+@section Sidebar {
+    <!-- Sidebar Content -->
+    <li id="groups-menu-item" class="active">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-users"></i>
+            <span class="menu-text">
+                Groupes
+                <span class="processing-icon hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></span>
+                <span class="submenu-right-buttons">
+                    <i class="anchor-button fas fa-cog" data-url="/Fr/Groups"></i>
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action">
+                <a href="#">
+                    <i class="submenu-action-icon fas fa-search"></i>
+                    <span class="menu-text"><input type="text" placeholder="Recherche ..." id="submenu-group-search" class="submenu-action-input" autocomplete="off" /></span>
+                </a>
+            </li>
+        </ul>
+    </li>
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-users"></i>
+        Groupes
+    </h1>
+    <div class="header-right-buttons view-buttons-hidden-576">
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="group-table-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Tableau">
+            <i class="fas fa-table"></i>
+        </button>
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="group-thumbnail-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Vignette">
+            <i class="fas fa-th"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Create Group Button -->
+<div class="right-buttons-no-float">
+    <button class="btn btn-white btn-primary btn-bold" id="new-group-button">
+        <i class="ace-icon fas fa-plus-square"></i>
+        Nouveau Group
+    </button>
+</div>
+@await Component.InvokeAsync("DisplayGroups", new { websiteLanguage = WebsiteLanguage.Fr })
+
+<!-- inline scripts related to this page -->
+@section Scripts {
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/js/Shared/jquery.bootstrap-duallistbox.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/datetime-moment.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.print.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.select.min.js"></script>
+
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.groups;
+
+        //Groups Array
+        var groupsArray = @Html.Raw(Json.Serialize(Model.Groups));
+    </script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/sidebar-groups-loading-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/manage-group-members-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/new-group-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/edit-group-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/delete-group-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/display-groups-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/index-groups-fr.js"></script>
+}
+

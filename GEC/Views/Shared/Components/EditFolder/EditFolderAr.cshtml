@@ -1,0 +1,52 @@
+﻿@model EditFolderArViewModel
+
+<div class="edit-folder-popup-wrapper">
+    <div class="edit-folder-popup">
+        <span class="closeButton">&times;</span>
+        <h3 class="header smaller lighter blue">تعديل ملف</h3>
+        <div class="edit-folder-popup-content">
+            <form id="edit-folder-form">
+
+                <input type="hidden" asp-for="WebsiteLanguage" />
+                <input type="hidden" asp-for="Id" />
+
+                <div class="edit-folder-entry">
+                    <div class="edit-folder-label">
+                        <label asp-for="Name"><strong>الإسم</strong><span class="red">*</span></label>
+                    </div>
+                    <div class="edit-folder-input">
+                        <input asp-for="Name" autocomplete="off"/>
+                    </div>
+                    <div class="edit-folder-validation">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="edit-folder-entry">
+                    <div class="edit-folder-label">
+                        <label asp-for="Description"><strong>الوصف</strong></label>
+                    </div>
+                    <div class="edit-folder-input">
+                        <textarea rows="4" asp-for="Description" autocomplete="off"></textarea>
+                    </div>
+                    <div class="edit-folder-validation">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="center-buttons">
+                    <div class="processing-icon-block-shown-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <div class="processing-icon-inline-block-hidden-576 hidden"><i class="ace-icon fas fa-sync fa-spin blue"></i></div>
+                    <button class="btn btn-white btn-success btn-bold" type="submit" id="edit-folder-submit-button">
+                        <i class="ace-icon fas fa-check-circle"></i>
+                        تأكيد
+                    </button>
+                    <button class="btn btn-white btn-danger btn-bold" type="reset" id="edit-folder-reset-button">
+                        <i class="ace-icon fas fa-times-circle"></i>
+                        إعادة
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

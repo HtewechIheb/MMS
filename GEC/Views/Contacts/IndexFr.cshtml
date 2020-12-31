@@ -1,0 +1,98 @@
+﻿@model IndexContactsViewModel
+
+@{
+    ViewData["Title"] = "Contacts";
+
+    string savePrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = "EditContact";
+    @await Component.InvokeAsync("EditContact", new { model = new EditContactFrViewModel(), websiteLanguage = WebsiteLanguage.Fr });
+
+    ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = savePrefix;
+}
+
+@section Styles {
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Assets/CSS/Shared/bootstrap-duallistbox.min.css" />
+
+    <link rel="stylesheet" href="~/Assets/CSS/Contacts/FR/edit-contact-fr.css" />
+    <link rel="stylesheet" href="~/Assets/CSS/Contacts/FR/display-contacts-fr.css" />
+}
+
+@section Sidebar {
+    <!-- Sidebar Content -->
+    <li id="groups-menu-item">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon folder-orange fas fa-users"></i>
+            <span class="menu-text">
+                Groupes
+                <span class="processing-icon hidden">
+                    <i class="ace-icon fas fa-sync fa-spin blue"></i>
+                </span>
+                <span class="submenu-right-buttons">
+                    <i class="anchor-button fas fa-cog" data-url="/Fr/Groups"></i>
+                    <i class="dropdown-sign fas fa-angle-down"></i>
+                </span>
+            </span>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="submenu-action">
+                <a href="#">
+                    <i class="submenu-action-icon fas fa-search"></i>
+                    <span class="menu-text"><input type="text" placeholder="Recherche ..." id="submenu-group-search" class="submenu-action-input" autocomplete="off" /></span>
+                </a>
+            </li>
+        </ul>
+    </li>
+}
+
+<!--Title-->
+<div class="header blue header-with-buttons">
+    <h1 class="lighter">
+        <i class="ace-icon header-icon fas fa-user"></i>
+        Contacts
+    </h1>
+    <div class="header-right-buttons view-buttons-hidden-576">
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="contact-table-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Tableau">
+            <i class="fas fa-table"></i>
+        </button>
+        <button class="btn btn-white btn-primary btn-bold tooltip-info" id="contact-list-view-button" data-toggle="tooltip" data-placement="bottom" title="Vue Liste">
+            <i class="fas fa-th-list"></i>
+        </button>
+    </div>
+</div>
+@await Component.InvokeAsync("DisplayContacts", new { websiteLanguage = WebsiteLanguage.Fr })
+
+<!-- inline scripts related to this page -->
+@section Scripts {
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/jquery.dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/datetime-moment.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.print.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Shared/dataTables.select.min.js"></script>
+
+    <script type="text/javascript">
+    //Assign Model Variables
+        currentPage = pages.contacts;
+
+        //Contacts Array
+        var contactsArray = @Html.Raw(Json.Serialize(Model.Contacts));
+
+        //Groups Array
+        var groupsArray = @Html.Raw(Json.Serialize(Model.Groups));
+    </script>
+    <script type="text/javascript" src="~/Assets/JS/Groups/FR/sidebar-groups-loading-fr.js"></script>
+
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/edit-contact-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/delete-contact-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/display-contacts-fr.js"></script>
+    <script type="text/javascript" src="~/Assets/JS/Contacts/FR/index-contacts-fr.js"></script>
+}
+
